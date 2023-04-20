@@ -8,9 +8,9 @@
 #include<malloc.h>
 #include<string.h>
 
-#define N_X 800
-#define N_Y 800
-#define N_Z 800
+#define N_X 560
+#define N_Y 560
+#define N_Z 560
 #define a 10e5
 #define eps 10e-8
 #define D_X 2
@@ -35,7 +35,7 @@ void initData(int sizeLayer, double* curLayer, int rank) {
             for (int k = 0; k < N_Y; k++) {
                 double y = Y_0 + k * D_Y / (double)(N_Y - 1);
                 if (k != 0 && k != N_Y - 1 && j != 0 && j != N_X - 1 && z != Z_0 && z != Z_0 + D_Z) {
-                    curLayer[index(i, j, k)] = 0;
+                    curLayer[index(i, j, k)] = -1000;
                 }
                 else {
                     curLayer[index(i, j, k)] = fi(x, y, z);
