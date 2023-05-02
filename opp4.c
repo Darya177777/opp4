@@ -66,7 +66,7 @@ double calculateDelta(double* area) {
             y = Y_0 + j * D_Y / (double)(N_Y - 1);
             for (int k = 0; k < N_Z; k++) {
                 z = Z_0 + k * D_Z / (double)(N_Z - 1);
-                deltaMax = fmax(deltaMax, abs(area[index(k, i, j)] - fi(x, y, z)));
+                deltaMax = fmax(deltaMax, fabs(area[index(k, i, j)] - fi(x, y, z)));
             }
         }
     }
@@ -101,7 +101,7 @@ double calculateLayer(int coordZ, int layerNumber, double* prevLayer, double* cu
                              (prevLayer[index(layerNumber, i, j + 1)] + prevLayer[index(layerNumber, i, j - 1)]) / (H_Y * H_Y) -
                              (6 - a * fi(x, y, z))) / (2 / (H_X * H_X) + 2 / (H_Y * H_Y) + 2 / (H_Z * H_Z) + a);
 
-                    if (abs(curLayer[index(layerNumber, i, j)] - prevLayer[index(layerNumber, i, j)]) > deltaMax)
+                    if (fabs(curLayer[index(layerNumber, i, j)] - prevLayer[index(layerNumber, i, j)]) > deltaMax)
                         deltaMax = curLayer[index(layerNumber, i, j)] - prevLayer[index(layerNumber, i, j)];
                 }
             }
